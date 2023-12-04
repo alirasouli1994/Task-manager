@@ -7,7 +7,7 @@ from tkinter import messagebox
 
 db_path = Path()
 db_path = db_path / "db.sqlite3"
-
+#salam
 def execute_db(f):
     def wrapper(*args,**kwargs):
         with sqlite3.connect(db_path) as connection:
