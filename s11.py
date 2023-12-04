@@ -4,10 +4,8 @@ import hashlib
 from datetime import datetime
 import tkinter as tk
 from tkinter import messagebox
-# for git test
 db_path = Path()
 db_path = db_path / "db.sqlite3"
-#salam
 def execute_db(f):
     def wrapper(*args,**kwargs):
         with sqlite3.connect(db_path) as connection:
