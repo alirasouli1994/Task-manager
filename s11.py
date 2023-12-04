@@ -4,7 +4,7 @@ import hashlib
 from datetime import datetime
 import tkinter as tk
 from tkinter import messagebox
-
+# for git test
 db_path = Path()
 db_path = db_path / "db.sqlite3"
 
