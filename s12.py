@@ -89,15 +89,15 @@ class App(tk.Tk):
         self.widgets["main_page"]["list_task"].heading("Creat at" , text="Creat at")
         self.widgets["main_page"]["list_task"].heading("Last update" , text="Last update")
         self.widgets["main_page"]["list_task"].heading("is done" , text="is done")
-
+        # self.widgets["main_page"]["list_task"].column(anchor="center")
         self.widgets["main_page"]["btn_logout"] = tk.Button(self.widgets["main_page"]["frm_main"], text="Logout", command=self.login_page)
 
         self.widgets["main_page"]["frm_main"].place(x=0, y=0, width=790, height=600)
         self.widgets["main_page"]["lbl_user"].place(x=10 , y=10 )
         self.widgets["main_page"]["lbl_task_name"].place(x=10 , y=40 )
         self.widgets["main_page"]["ent_task_add"].place(x=80 , y=40 , width=300)
-        self.widgets["main_page"]["btn_task_add"].place(x=410 , y=35 )
-        self.widgets["main_page"]["list_task"].place(x=10 ,y=150, width=790)
+        self.widgets["main_page"]["btn_task_add"].place(x=80 , y=120 )
+        self.widgets["main_page"]["list_task"].place(x=10 ,y=160, width=790)
 
         self.widgets["main_page"]["lbl_deadline"].place(x=10, y=90)
         self.widgets["main_page"]["lbl_deadline_year"] .place(x=85, y=70)
@@ -125,12 +125,13 @@ class App(tk.Tk):
     
     def refresh_tasks(self,username):
         tree = self.widgets["main_page"]["list_task"]
-        a = Task(None,username)
+        a = Task(None,username,None)
         result= a.featch_task()
         for i in tree.get_children():
             tree.delete(i)
         for row in result:
             tree.insert("","end",values=row)
+                       
 
     def destroy_all(self):
         for v1 in self.widgets.values():
@@ -180,8 +181,14 @@ class App(tk.Tk):
 
     def add_task(self,username):
         description = self.widgets["main_page"]["ent_task_add"].get()
-        
-        T = Task(description,username)
+        Y= self.widgets["main_page"]["ent_deadline_year"].get()
+        M= self.widgets["main_page"]["ent_deadline_month"].get()
+        D= self.widgets["main_page"]["ent_deadline_day"].get()
+        h= self.widgets["main_page"]["ent_deadline_hour"].get()
+        m= self.widgets["main_page"]["ent_deadline_minut"].get()
+        deadline= f'{Y}-{M}-{D}  {h}:{m}'
+        print(deadline)
+        T = Task(description,username,deadline)
         T.save_task()
         self.refresh_tasks(username)
   

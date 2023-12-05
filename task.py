@@ -27,7 +27,7 @@ class Task:
     is_table_created = False
     db_path = None
 
-    def __init__(self,description,username) -> None:
+    def __init__(self,description,username,deadline) -> None:
         if not Task.is_table_created:
             db_path = Path()
             db_path = db_path / "db.sqlite3"
@@ -35,7 +35,7 @@ class Task:
 
         self.description= description
         self.is_done= 0
-        self.dead_line= 0
+        self.dead_line= deadline
         self.create_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
         self.last_update=0
         self.username= username
@@ -47,10 +47,11 @@ class Task:
         user_id=self.featch_user_id()
         user_id=user_id[0]
         print(user_id)
-        return f"""insert into task (description,create_at,user_id) values
+        return f"""insert into task (description,create_at,user_id,dead_line) values
             ('{self.description}',
             '{self.create_at}',
-            '{user_id}'
+            '{user_id}',
+            '{self.dead_line}'
             );"""
     
     @execute_db
