@@ -68,6 +68,20 @@ class App(tk.Tk):
         self.widgets["main_page"]["lbl_task_name"] = tk.Label(self.widgets["main_page"]["frm_main"],text=f"Task Name")        
         self.widgets["main_page"]["ent_task_add"] = tk.Entry(self.widgets["main_page"]["frm_main"])
         self.widgets["main_page"]["btn_task_add"] = tk.Button(self.widgets["main_page"]["frm_main"], text="Add Task",command=lambda:self.add_task(username))
+        # dead line label 
+        self.widgets["main_page"]["lbl_deadline"] = tk.Label(self.widgets["main_page"]["frm_main"],text="Dead line ")
+        self.widgets["main_page"]["lbl_deadline_year"] = tk.Label(self.widgets["main_page"]["frm_main"],text="Year")
+        self.widgets["main_page"]["lbl_deadline_month"] = tk.Label(self.widgets["main_page"]["frm_main"],text="Month")
+        self.widgets["main_page"]["lbl_deadline_day"] = tk.Label(self.widgets["main_page"]["frm_main"],text="Day")
+        self.widgets["main_page"]["lbl_deadline_hour"] = tk.Label(self.widgets["main_page"]["frm_main"],text="Hour")
+        self.widgets["main_page"]["lbl_deadline_minut"] = tk.Label(self.widgets["main_page"]["frm_main"],text="Minut")
+        #deadline input field
+        self.widgets["main_page"]["ent_deadline_year"] = tk.Entry(self.widgets["main_page"]["frm_main"])
+        self.widgets["main_page"]["ent_deadline_month"] = tk.Entry(self.widgets["main_page"]["frm_main"])
+        self.widgets["main_page"]["ent_deadline_day"] = tk.Entry(self.widgets["main_page"]["frm_main"])
+        self.widgets["main_page"]["ent_deadline_hour"] = tk.Entry(self.widgets["main_page"]["frm_main"])
+        self.widgets["main_page"]["ent_deadline_minut"] = tk.Entry(self.widgets["main_page"]["frm_main"])
+
         self.widgets["main_page"]["list_task"]=ttk.Treeview(self.widgets["main_page"]["frm_main"],columns=('Task','Dead line','Creat at','Last update','is done'),show= "headings")
 
         self.widgets["main_page"]["list_task"].heading("Task" , text="Task")
@@ -81,10 +95,21 @@ class App(tk.Tk):
         self.widgets["main_page"]["frm_main"].place(x=0, y=0, width=790, height=600)
         self.widgets["main_page"]["lbl_user"].place(x=10 , y=10 )
         self.widgets["main_page"]["lbl_task_name"].place(x=10 , y=40 )
-        self.widgets["main_page"]["ent_task_add"].place(x=100 , y=40 , width=300)
+        self.widgets["main_page"]["ent_task_add"].place(x=80 , y=40 , width=300)
         self.widgets["main_page"]["btn_task_add"].place(x=410 , y=35 )
-        self.widgets["main_page"]["list_task"].place(x=10 ,y=70, width=790)
+        self.widgets["main_page"]["list_task"].place(x=10 ,y=150, width=790)
 
+        self.widgets["main_page"]["lbl_deadline"].place(x=10, y=90)
+        self.widgets["main_page"]["lbl_deadline_year"] .place(x=85, y=70)
+        self.widgets["main_page"]["lbl_deadline_month"].place(x=130, y=70)
+        self.widgets["main_page"]["lbl_deadline_day"].place(x=188,y=70)
+        self.widgets["main_page"]["lbl_deadline_hour"].place(x=235,y=70)
+        self.widgets["main_page"]["lbl_deadline_minut"].place(x=282,y=70)
+        self.widgets["main_page"]["ent_deadline_year"].place(x=80,y=90,width=40)
+        self.widgets["main_page"]["ent_deadline_month"].place(x=130,y=90,width=40)
+        self.widgets["main_page"]["ent_deadline_day"].place(x=180,y=90,width=40)
+        self.widgets["main_page"]["ent_deadline_hour"] .place(x=230,y=90,width=40)
+        self.widgets["main_page"]["ent_deadline_minut"].place(x=280,y=90,width=40)
 
         self.widgets["main_page"]["btn_logout"].place(x=10,y=400)
 
