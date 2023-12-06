@@ -131,6 +131,11 @@ class App(tk.Tk):
             tree.delete(i)
         for row in result:
             tree.insert("","end",values=row)
+        # the columns in the center
+        columns=tree["columns"]
+        for col in columns:
+            tree.heading(col, anchor="center")
+            tree.column(col, anchor="center")
                        
 
     def destroy_all(self):
