@@ -68,6 +68,7 @@ class App(tk.Tk):
         self.widgets["main_page"]["lbl_task_name"] = tk.Label(self.widgets["main_page"]["frm_main"],text=f"Task Name")        
         self.widgets["main_page"]["ent_task_add"] = tk.Entry(self.widgets["main_page"]["frm_main"])
         self.widgets["main_page"]["btn_task_add"] = tk.Button(self.widgets["main_page"]["frm_main"], text="Add Task",command=lambda:self.add_task(username))
+        self.widgets["main_page"]["btn_task_edit"] = tk.Button(self.widgets["main_page"]["frm_main"], text="Edit" , command=self.get_selection)
         # dead line label 
         self.widgets["main_page"]["lbl_deadline"] = tk.Label(self.widgets["main_page"]["frm_main"],text="Dead line ")
         self.widgets["main_page"]["lbl_deadline_year"] = tk.Label(self.widgets["main_page"]["frm_main"],text="Year")
@@ -82,7 +83,7 @@ class App(tk.Tk):
         self.widgets["main_page"]["ent_deadline_hour"] = tk.Entry(self.widgets["main_page"]["frm_main"])
         self.widgets["main_page"]["ent_deadline_minut"] = tk.Entry(self.widgets["main_page"]["frm_main"])
 
-        self.widgets["main_page"]["list_task"]=ttk.Treeview(self.widgets["main_page"]["frm_main"],columns=('Task','Dead line','Creat at','Last update','is done'),show= "headings")
+        self.widgets["main_page"]["list_task"]=ttk.Treeview(self.widgets["main_page"]["frm_main"],columns=('Task','Dead line','Creat at','Last update','is done'),show= "headings",selectmode="browse")
 
         self.widgets["main_page"]["list_task"].heading("Task" , text="Task")
         self.widgets["main_page"]["list_task"].heading("Dead line" , text="Dead line")
@@ -110,7 +111,8 @@ class App(tk.Tk):
         self.widgets["main_page"]["ent_deadline_day"].place(x=180,y=90,width=40)
         self.widgets["main_page"]["ent_deadline_hour"] .place(x=230,y=90,width=40)
         self.widgets["main_page"]["ent_deadline_minut"].place(x=280,y=90,width=40)
-
+        
+        self.widgets["main_page"]["btn_task_edit"].place(x=90,y=400)
         self.widgets["main_page"]["btn_logout"].place(x=10,y=400)
 
         # show tasks in tree
@@ -192,12 +194,15 @@ class App(tk.Tk):
         h= self.widgets["main_page"]["ent_deadline_hour"].get()
         m= self.widgets["main_page"]["ent_deadline_minut"].get()
         deadline= f'{Y}-{M}-{D}  {h}:{m}'
-        print(deadline)
+        # print(deadline)
         T = Task(description,username,deadline)
         T.save_task()
         self.refresh_tasks(username)
-  
-
+    
+    def get_selection(self):
+        # selected_item = self.widgets["main_page"]["list_task"].focus()
+        a= self.widgets["main_page"]["list_task"].focus()
+        # print(a)
 
 
 
