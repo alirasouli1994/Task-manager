@@ -68,7 +68,7 @@ class App(tk.Tk):
         self.widgets["main_page"]["lbl_task_name"] = tk.Label(self.widgets["main_page"]["frm_main"],text=f"Task Name")        
         self.widgets["main_page"]["ent_task_add"] = tk.Entry(self.widgets["main_page"]["frm_main"])
         self.widgets["main_page"]["btn_task_add"] = tk.Button(self.widgets["main_page"]["frm_main"], text="Add Task",command=lambda:self.add_task(username))
-        self.widgets["main_page"]["btn_task_edit"] = tk.Button(self.widgets["main_page"]["frm_main"], text="Edit" , command=self.get_selection)
+        self.widgets["main_page"]["btn_task_edit"] = tk.Button(self.widgets["main_page"]["frm_main"], text="    Edit    " , command=self.edit_selection_task)
         # dead line label 
         self.widgets["main_page"]["lbl_deadline"] = tk.Label(self.widgets["main_page"]["frm_main"],text="Dead line ")
         self.widgets["main_page"]["lbl_deadline_year"] = tk.Label(self.widgets["main_page"]["frm_main"],text="Year")
@@ -112,7 +112,7 @@ class App(tk.Tk):
         self.widgets["main_page"]["ent_deadline_hour"] .place(x=230,y=90,width=40)
         self.widgets["main_page"]["ent_deadline_minut"].place(x=280,y=90,width=40)
         
-        self.widgets["main_page"]["btn_task_edit"].place(x=90,y=400)
+        self.widgets["main_page"]["btn_task_edit"].place(x=65,y=400)
         self.widgets["main_page"]["btn_logout"].place(x=10,y=400)
 
         # show tasks in tree
@@ -199,10 +199,10 @@ class App(tk.Tk):
         T.save_task()
         self.refresh_tasks(username)
     
-    def get_selection(self):
+    def edit_selection_task(self):
         # selected_item = self.widgets["main_page"]["list_task"].focus()
         a= self.widgets["main_page"]["list_task"].focus()
-        # print(a)
+        print(a)
 
 
 
