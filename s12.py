@@ -25,7 +25,9 @@ class App(tk.Tk):
         self.widgets ={
                        "login_page":{},
                        "register_page":{},
-                       "main_page":{}
+                       "main_page":{},
+                       "edit_page":{},
+                       "frm_edit":{}
                        }
         self.set_mainwidow()
         self.login_page()
@@ -144,7 +146,7 @@ class App(tk.Tk):
         for v1 in self.widgets.values():
             for v2 in v1.values():
                 v2.destroy()
-        self.widgets = {"login_page":{},"register_page":{}, "main_page":{}}
+        self.widgets = {"login_page":{},"register_page":{}, "main_page":{},"edit_page":{},"frm_edit":{}}
 
 
     def set_mainwidow(self):
@@ -200,9 +202,26 @@ class App(tk.Tk):
         self.refresh_tasks(username)
     
     def edit_selection_task(self):
+        
         # selected_item = self.widgets["main_page"]["list_task"].focus()
         a= self.widgets["main_page"]["list_task"].focus()
-        print(a)
+        if a :
+            edit_window= tk.Toplevel(self)
+            edit_window.title("Edit Task")
+            
+            #.................edit window size
+            
+            screen_width = edit_window.winfo_screenwidth()
+            screen_height = edit_window.winfo_screenheight() 
+            app_width = 600
+            app_height = 200
+            x = (screen_width // 2) - (app_width // 2)
+            y = (screen_height //2) - (app_height // 2)
+            edit_window.geometry(f'{app_width}x{app_height}+{x}+{y}')
+            #..............................
+            
+            self.widgets["edit_page"]["frm_edit"] = tk.Frame(master=edit_window)
+            print(a)
 
 
 
