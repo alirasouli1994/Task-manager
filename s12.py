@@ -26,8 +26,7 @@ class App(tk.Tk):
                        "login_page":{},
                        "register_page":{},
                        "main_page":{},
-                       "edit_page":{},
-                       "frm_edit":{}
+                       "edit_page":{}
                        }
         self.set_mainwidow()
         self.login_page()
@@ -92,7 +91,6 @@ class App(tk.Tk):
         self.widgets["main_page"]["list_task"].heading("Creat at" , text="Creat at")
         self.widgets["main_page"]["list_task"].heading("Last update" , text="Last update")
         self.widgets["main_page"]["list_task"].heading("is done" , text="is done")
-        # self.widgets["main_page"]["list_task"].column(anchor="center")
         self.widgets["main_page"]["btn_logout"] = tk.Button(self.widgets["main_page"]["frm_main"], text="Logout", command=self.login_page)
 
         self.widgets["main_page"]["frm_main"].place(x=0, y=0, width=790, height=600)
@@ -117,14 +115,7 @@ class App(tk.Tk):
         self.widgets["main_page"]["btn_task_edit"].place(x=65,y=400)
         self.widgets["main_page"]["btn_logout"].place(x=10,y=400)
 
-        # show tasks in tree
-        # tree = self.widgets["main_page"]["list_task"]
-        # a = Task(None,username)
-        # result= a.featch_task()
-        # for i in tree.get_children():
-        #     tree.delete(i)
-        # for row in result:
-        #     tree.insert("","end",values=row)
+        
         self.refresh_tasks(username)
     
     def refresh_tasks(self,username):
@@ -146,7 +137,7 @@ class App(tk.Tk):
         for v1 in self.widgets.values():
             for v2 in v1.values():
                 v2.destroy()
-        self.widgets = {"login_page":{},"register_page":{}, "main_page":{},"edit_page":{},"frm_edit":{}}
+        self.widgets = {"login_page":{},"register_page":{}, "main_page":{},"edit_page":{}}
 
 
     def set_mainwidow(self):
@@ -219,9 +210,15 @@ class App(tk.Tk):
             y = (screen_height //2) - (app_height // 2)
             edit_window.geometry(f'{app_width}x{app_height}+{x}+{y}')
             #..............................
-            
+
             self.widgets["edit_page"]["frm_edit"] = tk.Frame(master=edit_window)
-            print(a)
+            
+            self.widgets["edit_page"]["lbl_task_name"] = tk.Label(self.widgets["edit_page"]["frm_edit"],text="Task Name")        
+            
+            self.widgets["edit_page"]["lbl_task_name"].pack()
+            
+
+            print(self.widgets["edit_page"]["lbl_task_name"])
 
 
 
