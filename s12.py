@@ -211,9 +211,9 @@ class App(tk.Tk):
             edit_window.geometry(f'{app_width}x{app_height}+{x}+{y}')
             #..............................
 
-            self.widgets["edit_page"]["frm_edit"] = tk.Frame(master=edit_window)
+            self.widgets["edit_page"]["frm_edit"] = tk.Frame()
             
-            self.widgets["edit_page"]["lbl_task_name"] = tk.Label(self.widgets["edit_page"]["frm_edit"],text="Task Name")        
+            self.widgets["edit_page"]["lbl_task_name"] = tk.Label(edit_window,text="Task Name")        
             
             self.widgets["edit_page"]["lbl_task_name"].pack()
             
