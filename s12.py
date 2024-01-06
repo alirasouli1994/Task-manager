@@ -211,15 +211,43 @@ class App(tk.Tk):
             edit_window.geometry(f'{app_width}x{app_height}+{x}+{y}')
             #..............................
 
-            self.widgets["edit_page"]["frm_edit"] = tk.Frame()
+            self.widgets["edit_page"]["frm_edit"] = edit_window
             
             self.widgets["edit_page"]["lbl_task_name"] = tk.Label(edit_window,text="Task Name")        
-            
-            self.widgets["edit_page"]["lbl_task_name"].pack()
-            
+                    
+            self.widgets["edit_page"]["ent_task_edit"] = tk.Entry(edit_window)
+            self.widgets["edit_page"]["btn_task_update"] = tk.Button(edit_window, text="Update Task")
+            self.widgets["edit_page"]["btn_task_delete"] = tk.Button(edit_window, text="    Delete    " )
+            # dead line label 
+            self.widgets["edit_page"]["lbl_deadline"] = tk.Label(edit_window,text="Dead line ")
+            self.widgets["edit_page"]["lbl_deadline_year"] = tk.Label(edit_window,text="Year")
+            self.widgets["edit_page"]["lbl_deadline_month"] = tk.Label(edit_window,text="Month")
+            self.widgets["edit_page"]["lbl_deadline_day"] = tk.Label(edit_window,text="Day")
+            self.widgets["edit_page"]["lbl_deadline_hour"] = tk.Label(edit_window,text="Hour")
+            self.widgets["edit_page"]["lbl_deadline_minut"] = tk.Label(edit_window,text="Minut")
+            #deadline input field
+            self.widgets["edit_page"]["ent_deadline_year"] = tk.Entry(edit_window)
+            self.widgets["edit_page"]["ent_deadline_month"] = tk.Entry(edit_window)
+            self.widgets["edit_page"]["ent_deadline_day"] = tk.Entry(edit_window)
+            self.widgets["edit_page"]["ent_deadline_hour"] = tk.Entry(edit_window)
+            self.widgets["edit_page"]["ent_deadline_minut"] = tk.Entry(edit_window)
 
-            print(self.widgets["edit_page"]["lbl_task_name"])
-
+            self.widgets["edit_page"]["lbl_task_name"].place(x= 10 ,y= 18)
+            self.widgets["edit_page"]["ent_task_edit"].place(x=80 , y=20 , width=300) 
+            self.widgets["edit_page"]["btn_task_update"].place(x= 10 ,y= 150) 
+            self.widgets["edit_page"]["btn_task_delete"].place(x= 520 ,y= 150) 
+            self.widgets["edit_page"]["lbl_deadline"].place(x= 10 ,y= 68) 
+            self.widgets["edit_page"]["lbl_deadline_year"].place(x= 85 ,y= 50) 
+            self.widgets["edit_page"]["lbl_deadline_month"].place(x= 130 ,y= 50) 
+            self.widgets["edit_page"]["lbl_deadline_day"].place(x= 188 ,y= 50) 
+            self.widgets["edit_page"]["lbl_deadline_hour"].place(x= 235 ,y= 50) 
+            self.widgets["edit_page"]["lbl_deadline_minut"].place(x= 282,y= 50) 
+            self.widgets["edit_page"]["ent_deadline_year"].place(x= 80 ,y= 70,width=40) 
+            self.widgets["edit_page"]["ent_deadline_month"].place(x= 130 ,y= 70,width=40) 
+            self.widgets["edit_page"]["ent_deadline_day"].place(x= 180 ,y= 70,width=40) 
+            self.widgets["edit_page"]["ent_deadline_hour"].place(x= 230 ,y= 70,width=40) 
+            self.widgets["edit_page"]["ent_deadline_minut"].place(x= 280 ,y= 70,width=40) 
+      
 
 
 my_app = App()
